@@ -1,0 +1,137 @@
+dir()
+getwd()
+setwd("E:/Lab. Anuros Neotropicais/Pseudopaludicola/cf. facureae - Palmeiras de Goiás GO/analises R")
+
+
+mydata<-read.table("acoustic_data_facureae_Palmeiras_Goias_ok.txt", head=T)
+
+head(mydata)
+str(mydata)
+fix(mydata)
+summary(mydata)
+
+
+##############################################################
+
+require(coin)
+
+str(mydata)
+
+#significância noteDur
+
+wilcox_test(noteDur~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = -3.705, p-value = 9.447e-05
+
+
+#significância interNote
+
+wilcox_test(interNote~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = -2.636, p-value = 0.00745
+
+
+#significância notes per minute
+
+wilcox_test(note.min~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = 5.105, p-value = 7.922e-10
+
+
+#significância number of notes per serie
+
+wilcox_test(numbNote_serie~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = 4.1787, p-value = 6.037e-06
+
+
+#significância series duration
+
+wilcox_test(SeriesDur~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = 2.9781, p-value = 0.002281
+
+
+#significância interseries interval
+
+wilcox_test( interSeries~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = 3.0844, p-value = 0.001499
+
+
+#significância number of series of call
+
+wilcox_test(numbSeries_call~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = -4.8341, p-value = 3.446e-08
+
+
+#significância domPeak
+
+wilcox_test(domPeak~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = 2.5221, p-value = 0.01094
+
+#significância minimo da freq dominante
+
+wilcox_test( minCallFreq~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = 0.63812, p-value = 0.5378
+
+#significância maximo da freq dominante
+
+wilcox_test(maxCallFreq~locality, data = mydata,
+conf.int = F, conf.level = 0.95, distribution = "exact")
+
+#resultado:  Z = 2.6894, p-value = 0.006263
+
+############################################
+#############################################
+#RandomForest
+
+head(mydata)
+str(mydata)
+require(randomForest)
+fix(mydata)
+
+pseud.rf <- randomForest(locality ~ ., data=mydata, importance=TRUE, 
+proximity=TRUE, ntree=1000)
+
+print(pseud.rf)
+
+require(rfPermute)
+
+proximityPlot(pseud.rf, dim.x = 1, dim.y = 2, legend.loc = "top", 
+circle.size = 8, point.size = 4, circle.border = 3, hull.alpha = 0.2, plot=TRUE)
+
+varImpPlot(pseud.rf, sort=TRUE, n.var=min(30, nrow(pseud.rf$importance)), 
+type=NULL, class=NULL, scale=TRUE, main=deparse(substitute(Variables)))
+
+pseud.rf$predicted # que foi classificado como?
+pseud.rf$dim.x
+
+plot(outlier(pseud.rf), type="h", col=c("red", "blue")[as.numeric(mydata$species)]) # acima de 10 = outliers graves
+
+## Look at variable importance:
+
+round(importance(pseud.rf), 1)
+
+x<-varUsed(pseud.rf, by.tree=FALSE, count=TRUE)
+
+packageDescription("rfPermute")$Version 
+
+MDSplot(pseud.rf, mydata$species, k=2, palette=NULL, pch=20)
+importance(pseud.rf, type=1)
+
+impHeatmap(pseud.rf, xlab = "Transmission", ylab = "Predictor")
+
+
