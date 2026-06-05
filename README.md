@@ -1,42 +1,105 @@
-# Pseudopaludicola-coracoralinae
-Overview
+# Pseudopaludicola coracoralinae
 
-This project applies statistical analysis and machine learning techniques to classify frog populations based on morphometric and bioacoustic measurements.
-The workflow includes data exploration, hypothesis testing, multivariate analysis, and Random Forest classification to identify the variables that best discriminate biological groups.
-The analyses supported the scientific description of a new species and were published in a peer-reviewed international journal.
+## Overview
 
-Techniques Used
+This project applies statistical analysis and machine learning techniques to classify frog populations using morphometric and bioacoustic data.
 
-Data Cleaning and Preparation
-Exploratory Data Analysis (EDA)
-Statistical Hypothesis Testing
-Permutation Statistics
-Random Forest Classification
-Feature Importance Analysis
-Data Visualization
+The workflow combines exploratory data analysis, hypothesis testing, multivariate statistics, and supervised machine learning to identify patterns and distinguish biological groups based on quantitative measurements.
 
-Technologies
+The analyses supported the formal description of the frog species *Pseudopaludicola coracoralinae* and were published in a peer-reviewed international journal.
 
-R
-coin
-randomForest
-rfPermute
-Dataset
+## Objectives
 
-The dataset contains morphometric and bioacoustic measurements collected from multiple frog populations.
+* Compare morphometric and bioacoustic traits between populations.
+* Identify variables that significantly differentiate groups.
+* Classify individuals using machine learning approaches.
+* Evaluate the contribution of predictor variables to classification performance.
+* Provide a reproducible analytical workflow for scientific research.
 
-Target variable:
+## Dataset
 
-locality (species identity)
+The dataset contains morphometric and bioacoustic measurements collected from individuals belonging to two species.
 
-Predictor variables:
+### Target Variable
 
-Morphometric measurements
-Acoustic measurements
+* `locality`
 
-Key Outcomes
+  * `palmeiras` = *Pseudopaludicola coracoralinae*
+  * `uberlandia` = *Pseudopaludicola facureae*
 
-Identification of statistically significant differences among populations.
-Classification of individuals using Random Forest models.
-Determination of the most informative variables for species discrimination.
-Reproducible workflow used in a published scientific study.
+### Predictor Variables
+
+* Morphometric measurements
+* Bioacoustic measurements
+
+## Methods
+
+### Exploratory Data Analysis (EDA)
+
+* Data inspection and summary statistics
+* Distribution assessment
+* Data visualization
+
+### Statistical Analysis
+
+* Univariate hypothesis testing
+* Permutation-based statistical inference
+* Multivariate statistical approaches
+
+### Machine Learning
+
+* Random Forest Classification
+* Variable Importance Analysis
+* Model interpretation and visualization
+
+## Technologies
+
+### Programming Language
+
+* R
+
+### Main Packages
+
+* coin
+* randomForest
+* rfPermute
+
+## Key Skills Demonstrated
+
+* Data Cleaning and Preparation
+* Exploratory Data Analysis (EDA)
+* Statistical Hypothesis Testing
+* Permutation Statistics
+* Multivariate Data Analysis
+* Supervised Machine Learning
+* Random Forest Modeling
+* Feature Importance Analysis
+* Data Visualization
+* Reproducible Research Workflows
+
+## Key Outcomes
+
+* Identification of statistically significant differences between species.
+* Successful classification of individuals using Random Forest models.
+* Determination of the most informative morphometric and bioacoustic variables for species discrimination.
+* Development of a reproducible analytical pipeline used in a peer-reviewed scientific publication.
+
+## Publication
+
+Andrade, F.S. et al. (2020).
+
+Description of *Pseudopaludicola coracoralinae*.
+
+European Journal of Taxonomy.
+
+https://europeanjournaloftaxonomy.eu/index.php/ejt/article/view/1013
+
+## Repository Contents
+
+* Morphometric datasets
+* Bioacoustic datasets
+* R scripts
+* Statistical analyses
+* Machine learning workflows
+* Supporting files used in the publication
+
