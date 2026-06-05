@@ -1,7 +1,36 @@
 # Pseudopaludicola-coracoralinae
-Scripts and morphometric and bioacoustic datasets used for the statistical analyses in the scientific article describing the frog species Pseudopaludicola coracoralinae (https://europeanjournaloftaxonomy.eu/index.php/ejt/article/view/1013). The main objective of this project was to classify individuals of the studied species based on morphometric and acoustic data, using a multivariate approach and machine learning techniques. Additionally, we tested for significant differences with a univariate approach and permutation statistics.
+Overview
+This project applies statistical analysis and machine learning techniques to classify frog populations based on morphometric and bioacoustic measurements.
+The workflow includes data exploration, hypothesis testing, multivariate analysis, and Random Forest classification to identify the variables that best discriminate biological groups.
+The analyses supported the scientific description of a new species and were published in a peer-reviewed international journal.
 
-In the datasets I uploaded, the "locality" column includes two categories (=species): "palmeiras" (P. coracoralinae) and "uberlandia" (P. facureae). The remaining columns contain morphometric and bioacoustic variables.
+Techniques Used
+Data Cleaning and Preparation
+Exploratory Data Analysis (EDA)
+Statistical Hypothesis Testing
+Permutation Statistics
+Random Forest Classification
+Feature Importance Analysis
+Data Visualization
 
-R language. 
-Packages used: coin, randomForest, and rfPermute.
+Technologies
+R
+coin
+randomForest
+rfPermute
+Dataset
+
+The dataset contains morphometric and bioacoustic measurements collected from multiple frog populations.
+
+Target variable:
+locality (species identity)
+
+Predictor variables:
+Morphometric measurements
+Acoustic measurements
+
+Key Outcomes
+Identification of statistically significant differences among populations.
+Classification of individuals using Random Forest models.
+Determination of the most informative variables for species discrimination.
+Reproducible workflow used in a published scientific study.
